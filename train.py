@@ -69,7 +69,8 @@ def imageNNLearner():
     return env, learner
 
 def imageNNFlowLearner():
-    env = FlowEnv(gym.make('Skiing-v0'), verbose=True)
+    # env = FlowEnv(gym.make('Skiing-v0'), verbose=False)
+    env = FlowEnv(gym.make('Skiing-v0', render_mode='human'),  verbose=False)
     # Build learner 
     actions_func = ski_learning.get_actions_for_env(env)
 
@@ -194,7 +195,8 @@ def trainOnce(env, learner, verbose):
     while not game_over:
 
         if verbose:
-            env.render()
+            # env.render()
+            pass
         action = learner.getAction(observation)
         
         new_observation, reward, game_over, info = env.step(action)

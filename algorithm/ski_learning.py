@@ -3,7 +3,8 @@ import numpy as np
 import cv2
 from keras import layers
 from keras import models
-from keras import optimizers
+# from keras import optimizers
+from tensorflow.keras import optimizers
 
 def get_actions_for_env(env):
 
@@ -139,6 +140,7 @@ def ski_ram_nn_model():
 def ski_image_nn_model():
     
     input_layer = layers.Input(shape=(250, 160, 3))
+    # input_layer = layers.Input(shape=(210, 160, 3))
     
     reduced = layers.MaxPooling2D(5)(input_layer)
     conv1 = layers.Conv2D(filters=3, kernel_size=3, strides=1, activation="relu")(reduced)
@@ -182,7 +184,8 @@ def ski_image_nn_model_2():
 
 def ski_image_nn_model_flow():
     
-    input_layer = layers.Input(shape=(250, 160, 9))
+    # input_layer = layers.Input(shape=(250, 160, 9))
+    input_layer = layers.Input(shape=(210, 160, 9))
     
     conv1 = layers.Conv2D(filters=6, kernel_size=3, strides=1, activation="relu")(input_layer)
     pool1 = layers.MaxPooling2D(2)(conv1)
